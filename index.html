@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ff3e79">
+  <meta name="description" content="Um quiz educativo para refletir sobre a adultização infantil na era digital.">
+  <title>Infância Não Tem Filtro — Quiz educativo</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <header class="topbar">
+    <a class="brand" href="#inicio" aria-label="Infância Não Tem Filtro — início">
+      <span class="brand-mark" aria-hidden="true">✳</span>
+      <span>infância <b>não tem filtro</b></span>
+    </a>
+    <span class="top-note"><span class="dot"></span> Um papo importante, sem complicação</span>
+  </header>
+
+  <main id="conteudo">
+    <section class="hero section-wrap" id="inicio">
+      <div class="hero-copy">
+        <div class="eyebrow"><span>💬</span> CONVERSA SÉRIA, JEITO LEVE</div>
+        <h1>Criança precisa de espaço para <span class="highlight">ser criança.</span></h1>
+        <p class="intro">A internet faz parte da vida — mas a infância não precisa seguir o ritmo dos adultos. Teste o que você sabe sobre <strong>adultização infantil</strong> e descubra novos jeitos de olhar para o mundo digital.</p>
+        <div class="hero-actions">
+          <button class="btn btn-dark btn-large" id="start-quiz">Começar o quiz <span aria-hidden="true">↗</span></button>
+          <span class="tiny-note">Sem cadastro. Só curiosidade.</span>
+        </div>
+        <div class="quick-facts" aria-label="Informações sobre o quiz">
+          <div><span class="fact-icon pink">✎</span><span><b>10 perguntas</b><small>Uma de cada vez</small></span></div>
+          <div><span class="fact-icon yellow">◷</span><span><b>3–5 minutos</b><small>No seu ritmo</small></span></div>
+        </div>
+      </div>
+      <div class="hero-art" aria-label="Ilustração abstrata de um celular, estrelas e formas coloridas" role="img">
+        <div class="shape shape-pink"></div><div class="shape shape-green"></div><div class="shape shape-yellow"></div>
+        <div class="spark spark-one">✳</div><div class="spark spark-two">✦</div><div class="spark spark-three">✳</div>
+        <div class="phone">
+          <div class="phone-top"><span></span><span></span><span></span></div>
+          <div class="phone-screen">
+            <div class="screen-sticker">oi, mundo! <span>✿</span></div>
+            <div class="screen-sun">☀</div>
+            <div class="screen-cloud">〰 〰</div>
+            <div class="screen-card"><span class="screen-heart">♥</span><span class="screen-lines"><i></i><i></i></span><span class="screen-star">✦</span></div>
+            <div class="screen-caption">curtir não é tudo :)</div>
+          </div>
+        </div>
+        <div class="art-label label-left">ser criança<br>é um direito!</div>
+        <div class="art-label label-right">#infânciaprotegida</div>
+        <div class="doodle doodle-left">〰</div><div class="doodle doodle-right">✿</div>
+      </div>
+      <div class="hero-bottom"><span>DESLIZE A CURIOSIDADE PARA O JOGO</span><span aria-hidden="true">↓</span></div>
+    </section>
+
+    <section class="quiz-section section-wrap" id="quiz" aria-labelledby="quiz-heading">
+      <div class="section-heading">
+        <div><div class="eyebrow"><span>🎯</span> AGORA É COM VOCÊ</div><h2 id="quiz-heading">Bora testar suas ideias?</h2></div>
+        <p>Leia cada situação, escolha uma alternativa e veja a explicação. Errar também faz parte de aprender.</p>
+      </div>
+      <div class="quiz-card" id="quiz-card">
+        <div class="quiz-welcome" id="quiz-welcome">
+          <div class="welcome-sticker">se liga! <span>✦</span></div>
+          <div class="welcome-illustration" aria-hidden="true"><span>?</span><i>✿</i><b>!</b></div>
+          <h3>Dez perguntas. Novas perspectivas.</h3>
+          <p>Você vai encontrar situações do cotidiano digital, pensar sobre elas e receber uma explicação depois de cada resposta.</p>
+          <button class="btn btn-pink" id="begin-inside">Começar agora <span aria-hidden="true">→</span></button>
+        </div>
+        <div class="quiz-play hidden" id="quiz-play" aria-live="polite">
+          <div class="quiz-meta"><span class="question-count" id="question-count">Pergunta 1 de 10</span><span class="category-pill" id="question-category">Entendendo o tema</span></div>
+          <div class="progress-track" role="progressbar" aria-label="Progresso do quiz" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0" id="progress-track"><span id="progress-bar"></span></div>
+          <h3 class="question-title" id="question-text"></h3>
+          <div class="answers" id="answers"></div>
+          <div class="feedback hidden" id="feedback" role="status">
+            <div class="feedback-title" id="feedback-title"></div>
+            <p id="feedback-text"></p>
+          </div>
+          <div class="quiz-footer"><span id="answered-note">Escolha uma alternativa para continuar.</span><button class="btn btn-dark" id="next-question" disabled>Confirmar resposta</button></div>
+        </div>
+        <div class="quiz-result hidden" id="quiz-result" aria-live="polite">
+          <div class="result-confetti" aria-hidden="true">✳　✦　✿　✧</div>
+          <div class="result-score" id="result-score">0<span>/10</span></div>
+          <div class="eyebrow">FIM DO QUIZ • E AGORA?</div>
+          <h3 id="result-title">Curiosidade é o começo!</h3>
+          <p id="result-message"></p>
+          <blockquote>“Proteger a infância também é uma responsabilidade no mundo digital.”</blockquote>
+          <button class="btn btn-dark btn-large" id="restart-quiz">Jogar novamente ↻</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="learn-section section-wrap" id="saiba-mais">
+      <div class="learn-heading"><span class="learn-doodle" aria-hidden="true">✿</span><div class="eyebrow">CURIOSIDADE QUE VIRA CONHECIMENTO</div><h2>Quer saber mais?</h2><p>Consulte fontes oficiais para conhecer os direitos de crianças e adolescentes.</p></div>
+      <div class="source-grid">
+        <a class="source-card" href="https://www.planalto.gov.br/ccivil_03/leis/l8069compilado.htm" target="_blank" rel="noopener noreferrer">
+          <span class="source-icon source-pink">📘</span><span class="source-tag">LEGISLAÇÃO</span><h3>Estatuto da Criança e do Adolescente</h3><p>Conheça o ECA e os direitos à dignidade, ao respeito e à proteção integral.</p><span class="source-link">Ler no Planalto ↗</span>
+        </a>
+        <a class="source-card" href="https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/lei/l15211.htm" target="_blank" rel="noopener noreferrer">
+          <span class="source-icon source-green">🛡️</span><span class="source-tag">AMBIENTE DIGITAL</span><h3>ECA Digital — Lei nº 15.211/2025</h3><p>Leia a lei brasileira dedicada à proteção de crianças e adolescentes em ambientes digitais.</p><span class="source-link">Ler no Planalto ↗</span>
+        </a>
+        <a class="source-card" href="https://www.gov.br/anpd/pt-br" target="_blank" rel="noopener noreferrer">
+          <span class="source-icon source-yellow">🔎</span><span class="source-tag">DADOS E PRIVACIDADE</span><h3>Autoridade Nacional de Proteção de Dados</h3><p>Informações oficiais sobre proteção de dados pessoais e privacidade no Brasil.</p><span class="source-link">Visitar a ANPD ↗</span>
+        </a>
+      </div>
+      <p class="source-note">As situações do quiz são fictícias e foram criadas para fins educativos. A exposição de uma imagem não é automaticamente um crime: contexto, consentimento, finalidade e possíveis danos importam. O conteúdo não substitui orientação jurídica.</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-top"><a class="brand brand-footer" href="#inicio"><span class="brand-mark">✳</span><span>infância <b>não tem filtro</b></span></a><p>Infância é tempo de descobrir o mundo — não de ter todas as respostas.</p></div>
+    <div class="credits">
+      <div><span>DESENVOLVIMENTO</span><b>Alexandra Moliterno</b></div>
+      <div><span>COLABORADORES</span><b>Jenyffer Pontes, Mikaele Santos e Emely Andrade</b></div>
+      <div><span>ORIENTAÇÃO</span><b>Prof. Eduardo Silva</b></div>
+    </div>
+    <div class="footer-bottom"><span>Projeto educativo • TCF</span><a href="#inicio">Voltar ao topo ↑</a></div>
+  </footer>
+</body>
+</html>
