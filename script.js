@@ -267,9 +267,48 @@ function showResult() {
   resultMessage.textContent = message;
   progressBar.style.width = "100%";
   progressTrack.setAttribute("aria-valuenow", String(questions.length));
+  
   scrollToQuiz();
 }
+
+async function salvarPontuacao() {
+  const nomeInput = document.getElementById("ranking-nome");
+  const botao = document.getElementById("salvar-pontuacao");
+  const status = document.getElementById("ranking-status");
+  const nome = nomeInput.value.trim();
+
+  if (nome.length < 2) {
+    status.textContent = "Digite um nome com pelo menos 2 letras.";
+    return;
+  }
+
+  botao.disabled = true;
+  status.textContent = "Salvando pontuação...";
+
+  try {
+    await addDoc(collection(db, "ranking"), {
+      nome: nome,
+      pontuacao: score,
+      total: questions.length,
+      criadoEm: serverTimestamp()
+    });
+
+    status.textContent = "Pontuação salva com sucesso!";
+    await carregarRanking();
+  } catch (erro) {
+    console.error("Erro ao salvar pontuação:", erro);
+    status.textContent = "Não foi possível salvar. Tente novamente.";
+  } finally {
+    botao.disabled = false;
+  }
+}
+
+document
+  .getElementById("salvar-pontuacao")
+  .addEventListener("click", salvarPontuacao);
+
 async function carregarRanking() {
+
   const lista = document.getElementById("ranking-list");
   const status = document.getElementById("ranking-status");
 
