@@ -268,7 +268,43 @@ function showResult() {
   progressTrack.setAttribute("aria-valuenow", String(questions.length));
   scrollToQuiz();
 }
+async function carregarRanking() {
+  const lista = document.getElementById("ranking-list");
+  const status = document.getElementById("ranking-status");
 
+  try {
+    lista.innerHTML = "<li>Carregando...</li>";
+
+    const consulta = query(
+      collection(db, "ranking"),
+      orderBy("pontuacao", "desc"),
+      limit(10)
+    );
+
+    const resultado = await getDocs(consulta);
+    lista.innerHTML = "";
+
+    if (resultado.empty) {
+      lista.innerHTML = "<li>Nenhuma pontuação ainda. Seja o primeiro!</li>";
+      status.textContent = "";
+      return;
+    }
+
+    resultado.forEach((documento) => {
+      const dados = documento.data();
+      const item = document.createElement("li");
+      item.textContent = `${dados.nome} — ${dados.pontuacao}/${dados.total}`;
+      lista.appendChild(item);
+    });
+
+    status.textContent = "Melhores 10 pontuações";
+  } catch (erro) {
+    console.error("Erro ao carregar ranking:", erro);
+    status.textContent = "Não foi possível carregar o ranking.";
+  }
+}
+
+carregarRanking();
 startButton.addEventListener("click", startQuiz);
 beginInside.addEventListener("click", startQuiz);
 nextButton.addEventListener("click", nextQuestion);
