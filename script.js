@@ -1,4 +1,4 @@
-const questions = [import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
 
 import {
   getFirestore,
@@ -22,6 +22,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const questions = [
   {
     category: "Entendendo o tema",
     question: "O que significa adultização infantil?",
