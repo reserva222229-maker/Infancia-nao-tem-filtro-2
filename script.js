@@ -1,4 +1,27 @@
-const questions = [
+const questions = [import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  getDocs,
+  query,
+  orderBy,
+  limit,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAaX-wYn2x1iEyiO9oJF2jovrNEu41ICpI",
+  authDomain: "infancia-nao-tem-filtro.firebaseapp.com",
+  projectId: "infancia-nao-tem-filtro",
+  storageBucket: "infancia-nao-tem-filtro.firebasestorage.app",
+  messagingSenderId: "734683602640",
+  appId: "1:734683602640:web:127a7a19589eaa7efa48d5"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
   {
     category: "Entendendo o tema",
     question: "O que significa adultização infantil?",
